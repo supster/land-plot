@@ -1,0 +1,80 @@
+<% provide(:title, @map.name) %>
+<h1><%= @map.name %></h1>
+<p>แผนผัง</p>
+
+<table id="table-map">
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<div id="0">
+				<%= div_for(@plots.where("group_id = 0"), class: "lp_item") do |plot| %>
+					<%= plot.code %>
+				<%end%>
+			</div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td>
+			<div id="1"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td>
+			<div id="2"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td>
+			<div id="3"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td>
+			<div id="4"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td>
+			<div id="5"></div>
+		</td>
+		<td>
+			<div id="6"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td>
+			<div id="7"></div>
+		</td>
+		<td>
+			<div id="8"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td>
+			<div id="9"></div>
+		</td>
+		<td>
+			<div id="10"></div>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td class="td-group">
+			<div id="11">
+				<%= div_for(@plots.where("group_id = 11"), class: "lp_item") do |plot| %>
+					<%= plot.code %>
+				<%end%>
+			</div>
+		</td>
+		<td class="td-group">
+			<div id="12">
+				<%= div_for(@plots.where("group_id = 12"), class: "lp_item") do |plot| %>
+				<%= plot.code %>
+				<%end%>
+			</div>
+		</td>
+	</tr>
+</table>

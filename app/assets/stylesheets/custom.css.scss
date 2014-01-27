@@ -1,0 +1,332 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  margin: 0;
+}
+
+input, select, textarea {
+  width: 400px;
+  margin: 5px;
+  height: auto;
+  font-size: 16pt;
+}
+
+a img {
+  border: none;
+}
+
+.container {
+  position: relative;
+  margin: 0;
+  margin-left: -460px;
+  left: 50%;
+  padding: 0;
+  width: 920px;
+}
+
+.navbar {
+  position: relative;
+  margin: 0;
+  width: 920px;
+  left: 50%;
+  margin-left: -460px;
+}
+
+.navbar-inner {
+  padding: 0;
+  min-height: 48px;
+  background-image: none;
+  background: white;
+  border: 0;
+}
+
+a#logo.brand {
+  position: absolute;
+  top: 0; left: 0;
+  width: 284px;
+  height: 48px;
+  font-size: 0;
+  background: url('/assets/logo.png') no-repeat;
+}
+
+#footer {
+  width: 920px;
+  left: 50%;
+  position: relative;
+  margin-left: -460px;
+  font-size: 10pt;
+}
+
+h3 {
+  margin: 0;
+  padding: 2.5%;
+  background-color: #0096E1;
+  color: #FFFFFF;
+  font-size: 28pt;
+  line-height: 28pt;
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 18pt;
+  line-height: 18pt;
+  padding: 2.5%;
+  margin: 0;
+}
+
+h5 {
+  font-size: 18pt;
+  line-height: 18pt;
+  margin: 0;
+  padding: 2.5% 0;
+  color: #0096E1;
+}
+
+
+
+/* Land plot table */
+
+.lp_item {
+  font-size: 16pt; 
+  background-color: #FF8800;
+  color: white;
+  display: inline-table;
+  position: relative;
+}
+
+.lp_link {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.lp_desc {
+  font-size: 16pt; line-height: 16pt;
+  color: white;
+  padding: 5%;
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  z-index: 2;
+}
+
+.disable .lp_desc {
+  color: #CCC;
+}
+
+.lp_item img {
+  position: relative;
+  width: 100%;
+}
+
+.lp_item.disable {
+  background-color: gray;
+}
+
+.lp_item.disable img {
+  opacity: 0.5;
+}
+
+
+/* Button */
+
+.btn {
+  padding: 1.25%;
+  margin: 2.5%;
+  font-size: 16pt;
+  line-height: 24pt;
+  border-radius: 0;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: none;
+  background-color: rgb(57, 204, 0);
+  border: 4px solid #208800;
+}
+
+
+
+/* Programs */
+
+#st_program .row {
+  position: relative;
+  margin: 0;
+}
+
+.program_list {
+  padding: 2.5%;
+}
+
+#st_program .program_map {
+  width: 100%;
+}
+
+.program_map img {
+  width: 100%;
+}
+
+ul.program_lists {
+  margin: 2.5% 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+li.program_list_item {
+  margin: 5% 0;
+}
+
+.program_name {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+
+#st_final .program_map {
+  margin: 2.5% -2.5%;
+}
+
+#st_final .row-fluid {
+  padding: 2.5%;
+}
+
+
+/* Reviews */
+
+.review_item {
+  padding: 5% 0;
+}
+
+
+/* Encouragement */
+
+.enc {
+  background: #F8F8F8;
+  display: table-row;
+  width: 100%;
+}
+
+.encphoto {
+  padding: 5%;
+  width: 25%;
+  display: table-cell;
+  vertical-align: middle;
+  background: #FDFDFD;
+}
+
+.encdesc {
+  display: table-cell;
+  width: 65%;
+  padding: 5%;
+  vertical-align: middle;
+}
+
+
+/* All Done */
+
+#all_done {
+  background: #0096E1;
+    color: white;
+    padding: 2.5%;
+}
+
+.all_done_text {
+  font-size: 20pt;
+    margin-bottom: 5%;
+}
+
+.img_all_done {
+  width: 100%
+}
+
+#all_done .btn {
+  margin-left: 0;
+}
+
+
+/* Welcome */
+
+#welcome_hero {
+  background: url('/assets/hero-image.jpg') no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+}
+
+#welcome_content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40%;
+  height: 80%;
+  vertical-align: middle;
+  padding: 5%;
+}
+
+#welcome_logo_large {
+  position: relative;
+  width: 60%;
+}
+
+#welcome_logo_large img {
+  width: 100%;
+}
+
+#welcome_logo_medium {
+  position: relative;
+  width: 90%;
+  display: none;
+}
+
+#welcome_logo_medium img {
+  width: 100%;
+}
+
+.welcome_header {
+  font-size: 20pt;
+  font-weight: bold;
+  line-height: 20pt;
+  margin: 5% 0;
+}
+
+.welcome_subheader {
+  font-size: 16pt;
+  line-height: 16pt;
+}
+
+#welcome_content .btn {
+  margin: 10% 0;
+  width: 67%;
+}
+
+.welcome_text {
+  display: inline-block;
+  width: 28%;
+  float: left;
+  margin-right: 5%;
+}
+
+.welcome_text h4 {
+  padding: 10% 0;
+}
+
+
+#table-map{
+  border: 1px solid;
+}
+
+.space-bottom{
+  padding-bottom: 20px;
+}
+
+.td-group{
+  background-color: white;
+  padding: 5px 5px 20px 5px;
+  border-spacing: 10px;
+
+}
