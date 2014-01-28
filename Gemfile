@@ -5,13 +5,9 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'jquery-rails'
+gem 'pg', '0.12.2'
 
-
-group :development, :test do
-  gem 'sqlite3' 
-  gem 'pg', '0.12.2'
-  gem 'rspec-rails', '2.14.1'
+group :development do
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.5.0'  
   gem 'spork', '0.9.2'
@@ -21,15 +17,18 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '3.2.5'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+  gem 'jquery-rails'
+  gem "bootstrap-sass", "~> 3.0.3.0"
+  gem 'uglifier', '2.4.0'  
 end
 
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'rspec-rails', '2.14.1'
+  gem 'capybara', '2.2.1'
   gem 'factory_girl_rails', '4.3.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
+  gem 'webrat', "~> 0.7.3"
   # gem 'launchy', '2.1.0'
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'

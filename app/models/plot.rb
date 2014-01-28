@@ -1,9 +1,17 @@
 class Plot < ActiveRecord::Base
-  attr_accessible :code, :home_type, :size, 
-  								:row, :col, :group_id, :price
+  attr_accessible :code, :home_type, :size, :price, :status_id,
+  								:row, :col, :group_id 
   belongs_to :map
-  has_one :buyer
+  belongs_to :buyer
+  belongs_to :status
 
   validates :code, presence: true, length: { in: 2..20 }
+  validates :status_id, presence: true
+  validates :size, numericality: true, allow_nil: true
+  validates :price, numericality: true, allow_nil: true
+
+  def status_name
+  	self.status.name
+  end
   
 end

@@ -1,0 +1,38 @@
+<%= render "shared/error", error: @plot %>
+<h2>Plot Information</h2>
+<%= form_for @plot do |f| %>
+	<div class="control-group">
+		<%= f.label :code, class: "control-label" %>
+		<div class="controls"><%= f.text_field :code, readonly: true, class: "input-sm" %></div>
+	</div>
+	<div class="control-group">
+		<%= f.label :status, class: "control-label" %>
+		<div class="controls">
+			<%= f.select :status_id, Status.all.collect { |s| [s.name, s.id] } %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :home_type, class: "control-label" %>
+		<div class="controls">
+			<%= f.text_field :home_type, class: "input-sm" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :size, class: "control-label" %>
+		<div class="controls">
+			<%= f.text_field :size, class: "input-sm" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :price, class: "control-label" %>
+		<div class="controls">
+			<%= f.text_field :price, class: "input-sm" %>
+		</div>
+	</div>
+	<div style="padding: 10px 0 0 0;">
+		<%= f.submit "Save", class: "btn btn-sm btn-primary",
+					style: "width: 120px" %>
+		<%= link_to "Cancel", map_path(@plot.map_id),
+					class: "btn btn-sm btn-primary", style: "width: 120px" %>
+	</div>		
+<% end %>

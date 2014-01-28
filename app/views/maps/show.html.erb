@@ -1,80 +1,130 @@
 <% provide(:title, @map.name) %>
-<h1><%= @map.name %></h1>
-<p>แผนผัง</p>
+<h2>Real Estate Development Land Map</h2>
 
 <table id="table-map">
 	<tr class="space-bottom">
-		<td></td>
-		<td class="td-group">
-			<div id="0">
-				<%= div_for(@plots.where("group_id = 0"), class: "lp_item") do |plot| %>
-					<%= plot.code %>
-				<%end%>
-			</div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td></td>
 		<td>
-			<div id="1"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td></td>
-		<td>
-			<div id="2"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td></td>
-		<td>
-			<div id="3"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td></td>
-		<td>
-			<div id="4"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td>
-			<div id="5"></div>
-		</td>
-		<td>
-			<div id="6"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td>
-			<div id="7"></div>
-		</td>
-		<td>
-			<div id="8"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td>
-			<div id="9"></div>
-		</td>
-		<td>
-			<div id="10"></div>
-		</td>
-	</tr>
-	<tr class="space-bottom">
-		<td class="td-group">
-			<div id="11">
-				<%= div_for(@plots.where("group_id = 11"), class: "lp_item") do |plot| %>
-					<%= plot.code %>
-				<%end%>
-			</div>
+			Legend:<br/>
+			<div class="legend lp_available">&nbsp;</div> Available<br/>
+			<div class="legend lp_deposit">&nbsp;</div> Deposit<br/>
+			<div class="legend lp_transfer">&nbsp;</div> Transfer<br/>
+			<div class="legend lp_complete">&nbsp;</div> Complete<br/>
 		</td>
 		<td class="td-group">
-			<div id="12">
-				<%= div_for(@plots.where("group_id = 12"), class: "lp_item") do |plot| %>
-				<%= plot.code %>
-				<%end%>
-			</div>
+			<%= render "plots/plots_by_group", group: "0"  %>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td rowspan="2"><%= render "plots/plots_by_group", group: "1"  %></td>
+					<td><%= render "plots/plots_by_group", group: "2"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "3"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "4"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "5"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "6"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "7"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "8"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "9"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td></td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "10"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "11"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="space-bottom">
+		<td class="td-group">
+			<%= render "plots/plots_by_group", group: "15"  %>
+		</td>
+		<td class="td-group">
+			<table>
+				<tr>
+					<td rowspan="2"><%= render "plots/plots_by_group", group: "12"  %></td>
+					<td><%= render "plots/plots_by_group", group: "13"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "14"  %></td>
+				</tr>
+			</table>
+		</td>
+	</tr>	
+	<tr class="space-bottom">
+		<td class="td-group">
+			<table>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "16"  %></td>
+				</tr>
+				<tr>
+					<td><%= render "plots/plots_by_group", group: "17"  %></td>
+				</tr>
+			</table>
+		</td>
+		<td class="td-group">
+			<%= render "plots/plots_by_group", group: "18"  %>
+		</td>		
+	</tr>
+	<tr class="space-bottom">
+		<td class="td-group">
+			<%= render "plots/plots_by_group", group: "19"  %>
+		</td>
+		<td class="td-group">
+			<%= render "plots/plots_by_group", group: "20"  %>
 		</td>
 	</tr>
 </table>
+
+<script>
+	$(function(){
+		$(".lp").onclick(function(){
+
+		})
+	})
+</script>
