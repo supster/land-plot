@@ -25,21 +25,22 @@
 			<table>
 				<tr>
 					<td rowspan="2">
-						<%= render "plots/plot", plot: @plots.find_by_code("B31")  %>
-						<%= render "plots/plot", plot: @plots.find_by_code("B30")  %>
+						<%= render "plots/plot", plot: @plots.find_by_code("B31") unless  @plots.find_by_code("B31").nil? %>
+						<%= render "plots/plot", plot: @plots.find_by_code("B30") unless @plots.find_by_code("B30").nil?%>
 					</td>
 					<td>
 						<table>
 							<tr>
 								<td colspan="2" align="center">
-									<%= render "plots/plot", plot: @plots.find_by_code("B32")  %>
+									<%= render "plots/plot", plot: @plots.find_by_code("B32") unless @plots.find_by_code("B32").nil? %>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<%= render "plots/plot", plot: @plots.find_by_code("B29")  %>
+									<%= render "plots/plot", plot: @plots.find_by_code("B29") unless @plots.find_by_code("B29").nil? %> 
 								</td>
-								<td>																<%= render "plots/plot", plot: @plots.find_by_code("B28")  %>
+								<td>
+									<%= render "plots/plot", plot: @plots.find_by_code("B28") unless @plots.find_by_code("B28").nil? %>
 								</td>
 							</tr>
 						</table>
@@ -47,13 +48,13 @@
 					<td>
 						<table>
 								<tr>
-									<td><%= render "plots/plot", plot: @plots.find_by_code("B34")  %></td>
+									<td><%= render "plots/plot", plot: @plots.find_by_code("B34") unless @plots.find_by_code("B34").nil? %></td>
 								</tr>
 								<tr>
-									<td><%= render "plots/plot", plot: @plots.find_by_code("B33")  %></td>
+									<td><%= render "plots/plot", plot: @plots.find_by_code("B33") unless @plots.find_by_code("B33").nil? %></td>
 								</tr>
 								<tr>
-									<td><%= render "plots/plot", plot: @plots.find_by_code("B27")  %></td>
+									<td><%= render "plots/plot", plot: @plots.find_by_code("B27") unless @plots.find_by_code("B27").nil?%></td>
 								</tr>
 						</table>	
 					</td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140127151421) do
+ActiveRecord::Schema.define(:version => 20140129174123) do
 
   create_table "buyers", :force => true do |t|
     t.string   "first_name"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20140127151421) do
     t.integer  "group_id"
     t.decimal  "price"
     t.integer  "status_id"
+    t.string   "deed_no"
+    t.text     "comments"
   end
 
   create_table "statuses", :force => true do |t|

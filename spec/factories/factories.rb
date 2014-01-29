@@ -15,6 +15,8 @@ FactoryGirl.define do
 		col 		1
 		group_id 	1
 		price		100000
+		deed_no		"1234"
+		comments	"abcde"
 		map
 		status
 	end

@@ -14,15 +14,17 @@ describe Plot do
 	subject { plot }
 
 	it { should respond_to(:code) }
-	it { should respond_to(:row) }
+	it { should respond_to(:row) } 
 	it { should respond_to(:col) }
 	it { should respond_to(:group_id) }	
 	it { should respond_to(:price)  }
 	it { should respond_to(:status_id) }
 	it { should respond_to(:status) }
 	it { should respond_to(:status_name) }
+	it { should respond_to(:deed_no) }
+	it { should respond_to(:comments) }
 
-	it 	{ should be_valid }	
+	it { should be_valid }	
 
 	describe "attributes" do
 		context "when code is not present" do
@@ -59,5 +61,4 @@ describe Plot do
 	describe "associations" do
 		
 	end
-
 end

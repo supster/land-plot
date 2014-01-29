@@ -1,6 +1,6 @@
 class Plot < ActiveRecord::Base
   attr_accessible :code, :home_type, :size, :price, :status_id,
-  								:row, :col, :group_id 
+  								:row, :col, :group_id, :deed_no, :comments
   belongs_to :map
   belongs_to :buyer
   belongs_to :status

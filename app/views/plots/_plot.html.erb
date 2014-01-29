@@ -4,7 +4,7 @@
 	else
 		format = "lp_row "
 	end if
-	color = plot.status.nil? ? "" : "lp_#{plot.status.color}"
+	color = plot.status.color.nil? ? "" : "lp_#{plot.status.color}"
 	css_class = format + color
 %>
 
