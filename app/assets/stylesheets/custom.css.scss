@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+td, table{
+  padding: 0;
+  margin: 0;
+}
+
 input, select, textarea {
   width: 300px;
   height: auto;
@@ -40,31 +45,41 @@ a#logo.navbar-brand {
 /* Land plot table */
 
 .lp {
-  font-size: 16pt;
-  display: inline-table;
+  font-size: 14pt;
+  display: table-cell;
   width: 50px;
   text-align: center;
-  height: 100%;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  margin: 0;
 }
 
-.lp_available {
+.lp_av {
   background-color: #C04D31;
   color: white;
 }
 
-.lp_deposit {
+.lp_dr {
   background-color: #F2A054;
   color: white;
 }
 
-.lp_transfer {
-  background-color: #F1D8B5;
+.lp_cs {
+  background-color: #769FA5;
   color: white;
 }
 
-.lp_complete {
+.lp_tr {
   background-color: #81A489;
   color: white;
+}
+
+.lp_garden {
+  background-color: green;
+  width: 300px;
+  font-size: 12pt;
+  color: white;
+  text-align: center;
 }
 
 .legend {
@@ -72,6 +87,13 @@ a#logo.navbar-brand {
   height: 20px;
   display: inline-block;
   margin: 1px;
+}
+
+.legend_box{
+  border: 1px solid black;
+  float: right;
+  padding: 5px;
+  margin-right: 20px;
 }
 
 a.lp_link {
@@ -83,6 +105,7 @@ a.lp_link {
   font-size: 10pt;
   text-align: right;
   color: black;
+  margin-right: 5px;
 }
 
 .disable .lp_desc {
@@ -90,16 +113,10 @@ a.lp_link {
 }
 
 #table-map{
-  width: 100%;
-}
-
-.space-bottom{
-  padding-bottom: 20px;
+  width: 80%;
 }
 
 .td-group{
   background-color: white;
-  padding: 5px 5px 20px 5px;
-  border-spacing: 2px;
-
+  padding-bottom: 25px;
 }

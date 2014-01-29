@@ -1,20 +1,22 @@
 <% provide(:title, @map.name) %>
 <h2>Real Estate Development Land Map</h2>
+<div class="legend_box">
+	Legend:<br/>
+	<div class="legend lp_av">&nbsp;</div> Available<br/>
+	<div class="legend lp_dr">&nbsp;</div> Deposit Received<br/>
+	<div class="legend lp_cs">&nbsp;</div> Contract Signed<br/>
+	<div class="legend lp_tr">&nbsp;</div> Transferred<br/>
+</div>
 
 <table id="table-map">
-	<tr class="space-bottom">
+	<tr>
 		<td>
-			Legend:<br/>
-			<div class="legend lp_available">&nbsp;</div> Available<br/>
-			<div class="legend lp_deposit">&nbsp;</div> Deposit<br/>
-			<div class="legend lp_transfer">&nbsp;</div> Transfer<br/>
-			<div class="legend lp_complete">&nbsp;</div> Complete<br/>
 		</td>
 		<td class="td-group">
 			<%= render "plots/plots_by_group", group: "0"  %>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td></td>
 		<td class="td-group">
 			<table>
@@ -28,7 +30,7 @@
 			</table>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td></td>
 		<td class="td-group">
 			<table>
@@ -41,7 +43,7 @@
 			</table>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td></td>
 		<td class="td-group">
 			<table>
@@ -54,7 +56,7 @@
 			</table>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td></td>
 		<td class="td-group">
 			<table>
@@ -67,7 +69,7 @@
 			</table>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td></td>
 		<td class="td-group">
 			<table>
@@ -80,9 +82,10 @@
 			</table>
 		</td>
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td class="td-group">
 			<%= render "plots/plots_by_group", group: "15"  %>
+			<div class="lp lp_garden">Public Garden</div>
 		</td>
 		<td class="td-group">
 			<table>
@@ -96,7 +99,7 @@
 			</table>
 		</td>
 	</tr>	
-	<tr class="space-bottom">
+	<tr>
 		<td class="td-group">
 			<table>
 				<tr>
@@ -111,7 +114,7 @@
 			<%= render "plots/plots_by_group", group: "18"  %>
 		</td>		
 	</tr>
-	<tr class="space-bottom">
+	<tr>
 		<td class="td-group">
 			<%= render "plots/plots_by_group", group: "19"  %>
 		</td>

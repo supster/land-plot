@@ -1,5 +1,5 @@
 	<% @plots.where("group_id = " + group).each do |p| %>
-	<div id="<%= p.id %>" class="lp <%= "lp_" + p.status_name.downcase unless p.status.nil? %>">
+	<div id="<%= p.id %>" class="lp <%= "lp_" + p.status.color unless p.status.nil? %>">
 		<%= link_to edit_plot_path(p), class: "lp_link" do %>
 			<%= p.code %>
 		<%end%>
