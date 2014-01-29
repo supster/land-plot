@@ -1,9 +1,9 @@
 LandPlot::Application.routes.draw do
   #get "maps/show"
-  resources :maps, only: [:show]
+  resources :maps, only: [:index, :show]
   resources :plots
 
-  root to: "maps#show"
+  root to: "maps#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
