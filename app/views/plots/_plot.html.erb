@@ -1,0 +1,19 @@
+<% 	
+	if plot.group_id != 27
+		format = "lp "
+	else
+		format = "lp_row "
+	end if
+	color = plot.status.nil? ? "" : "lp_#{plot.status.color}"
+	css_class = format + color
+%>
+
+<div id="<%= plot.id %>" class="<%= css_class %>">
+	<%= link_to edit_plot_path(plot), class: "lp_link" do %>
+		<%= plot.code %>
+	<%end%>
+	<div class="lp_desc">
+		<%= plot.home_type %><br/>
+		<%= plot.size %>
+	</div>
+</div>

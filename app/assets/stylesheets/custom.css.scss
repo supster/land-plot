@@ -54,8 +54,19 @@ a#logo.navbar-brand {
   margin: 0;
 }
 
+.lp_row {
+  font-size: 14pt;
+  display: table;
+  width: 50px;
+  text-align: center;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  margin: 0;
+}
+
+
 .lp_av {
-  background-color: #C04D31;
+  background-color: #81A489;
   color: white;
 }
 
@@ -65,12 +76,12 @@ a#logo.navbar-brand {
 }
 
 .lp_cs {
-  background-color: #769FA5;
+  background-color: #D26676;
   color: white;
 }
 
 .lp_tr {
-  background-color: #81A489;
+  background-color: #F1D8B5;
   color: white;
 }
 

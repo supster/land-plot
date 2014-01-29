@@ -168,4 +168,53 @@ j = 0
 	j += 1	
 end
 
+#B Zone
+j = 0
+42.downto(35).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 100, 
+									 row: 0, col: j, group_id: 21, status_id: status_av)
+	j += 1
+end
+
+j = 0
+34.downto(27).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 100, 
+									 row: 0, col: j, group_id: 22, status_id: status_av)
+	j += 1
+end
+
+j = 0
+(20..26).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 66, 
+									 row: 0, col: j, group_id: 23, status_id: status_av)
+	j += 1
+end
+
+j = 0
+19.downto(13).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 66, 
+									 row: 1, col: j, group_id: 24, status_id: status_av)
+	j += 1	
+end
+
+j = 0
+(7..12).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 66, 
+									 row: 0, col: j, group_id: 25, status_id: status_av)
+	j += 1
+end
+
+j = 0
+6.downto(1).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 66, 
+									 row: 1, col: j, group_id: 26, status_id: status_av)
+	j += 1	
+end
+
+j = 0
+(43..49).each do |i|
+	map.plots.create(code: "B#{i}", home_type: "V1", size: 66, 
+									 row: j, col: 0, group_id: 27, status_id: status_av)
+	j += 1	
+end
 
