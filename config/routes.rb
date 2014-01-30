@@ -4,6 +4,7 @@ LandPlot::Application.routes.draw do
   resources :plots
 
   root to: "maps#index"
+  get 'summary', to: 'reports#show'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
