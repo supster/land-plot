@@ -4,5 +4,13 @@
 	  <div class="navbar-header">
 	    <%= link_to "", map_path(1), {id: "logo", class: 'navbar-brand'}%>
 	  </div>
+  
+ 		<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%= map_path(1) %>">Map</a></li>
+        <li><a href="<%= summary_path %>">Summary Report</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
   </div>
  </nav>
