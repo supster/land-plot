@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   def show
   	@map = Map.find(params[:id])
-  	@plots = @map.plots.order("group_id, col")
+  	@plots = @map.plots.order("group_id, row, col")
   end
 
   def index
