@@ -6,7 +6,7 @@ class PlotsController < ApplicationController
 	def update
 		@plot = Plot.find(params[:id])
 		if @plot.update_attributes(params[:plot])
-			#flash[:success] = "Updated Successful"
+			flash[:success] = "Updated Successful"
 			redirect_to map_path(@plot.map_id)
 		else
 			render "edit"

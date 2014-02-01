@@ -11,11 +11,12 @@ feature 'User edit plot' do
 	it { expect(page).to have_field('plot_status_id', type: 'select') }
 	it { expect(page).to have_field('plot_home_type', type: 'text') }
 	it { expect(page).to have_field('plot_size', type: 'text') }
-	it { expect(page).to have_field('plot_price', type: 'text') }
+	#it { expect(page).to have_field('plot_price', type: 'text') }
+	it { expect(page).to have_field('plot_base_price', type: 'text') }
 	it { expect(page).to have_button('Save') }	
 
 	scenario 'with invalid price' do
-		fill_in 'plot_price', with: 'abcd'
+		fill_in 'plot_base_price', with: 'abcd'
 		click_button 'Save'
 
 		expect(page).to have_content('error')

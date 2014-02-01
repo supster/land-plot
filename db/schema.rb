@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140129174123) do
+ActiveRecord::Schema.define(:version => 20140201031517) do
 
   create_table "buyers", :force => true do |t|
     t.string   "first_name"
@@ -35,15 +35,19 @@ ActiveRecord::Schema.define(:version => 20140129174123) do
     t.float    "size"
     t.integer  "map_id"
     t.integer  "buyer_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "row"
     t.integer  "col"
     t.integer  "group_id"
-    t.decimal  "price"
+    t.decimal  "price",              :default => 0.0
     t.integer  "status_id"
     t.string   "deed_no"
     t.text     "comments"
+    t.decimal  "base_price",         :default => 0.0
+    t.decimal  "extra_land_price",   :default => 0.0
+    t.decimal  "house_add_on_price", :default => 0.0
+    t.decimal  "plot_add_on_price",  :default => 0.0
   end
 
   create_table "statuses", :force => true do |t|

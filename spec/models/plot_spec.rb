@@ -23,6 +23,11 @@ describe Plot do
 	it { should respond_to(:status_name) }
 	it { should respond_to(:deed_no) }
 	it { should respond_to(:comments) }
+	it { should respond_to(:base_price) }
+	it { should respond_to(:extra_land_price) }
+	it { should respond_to(:house_add_on_price) }
+	it { should respond_to(:plot_add_on_price) }
+
 
 	it { should be_valid }	
 
@@ -56,6 +61,27 @@ describe Plot do
 			before { plot.price = "def" }
 			it { should_not be_valid }
 		end
+
+		context "when base price is not a number" do
+			before { plot.base_price = "def" }
+			it { should_not be_valid }			
+		end
+
+		context "when extra land price is not a number" do
+			before { plot.extra_land_price = "def" }
+			it { should_not be_valid }			
+		end
+
+		context "when base house add on price is not a number" do
+			before { plot.house_add_on_price = "def" }
+			it { should_not be_valid }			
+		end
+
+		context "when plot add on price is not a number" do
+			before { plot.plot_add_on_price = "def" }
+			it { should_not be_valid }			
+		end
+
 	end
 
 	describe "associations" do
