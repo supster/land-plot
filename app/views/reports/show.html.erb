@@ -3,15 +3,17 @@
 	<tr>
 		<th>Status</th>
 		<th>Number</th>
+		<th>Percent</th>
 	</tr>
 	<% @statuses.each do |st| %>
 		<tr>
 			<td><%= st.name %></td>
-			<td><%= st.plots.count %></td>
+			<td align="right"><%= st.plots.count %></td>
+			<td align="right"><%= number_to_percentage((st.plots.count.to_f/@plot_count.to_f) *100.0) unless @plot_count == 0 %></td>
 		</tr>
 	<% end %>	
 	<tr>
 		<td align="right"><b>Total:</b></td>
-		<td><%= @plot_count %></td>
+		<td align="right"><%= @plot_count %></td>
 	</tr>
 </table>
