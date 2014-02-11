@@ -17,6 +17,6 @@
 		<%= plot.size %>
 	</div>
 	<div class="lp_desc_left">
-		<%= plot.contractor_pay_no unless plot.contractor_pay_no == 5 %>
+		<%= plot.contractor_pay_no unless plot.status_name == "Transferred" %>
 	</div>
 </div>

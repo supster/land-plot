@@ -11,7 +11,9 @@
 		<div class="form-group">
 			<%= f.label :transfer_date, "วันที่โอน", class: "col-sm-2 col-sm-2 control-label" %>
 			<div class="col-sm-6">
-				<%= f.text_field :transfer_date, class: "form-control"  %>
+				<%= f.text_field :transfer_date, 
+								 value: @plot.transfer_date.nil? ? nil : l(@plot.transfer_date), 
+								 class: "form-control"  %>
 			</div>
 		</div>	
 		<div class="form-group">
@@ -111,6 +113,8 @@
 		var status = $("#plot_status_id option:selected").text();
 		if(status != 'Transferred')
 			$("#transfer_info").hide();
+
+	    $( "#plot_transfer_date" ).datepicker();
 
 		//bind select change function
 		$("#plot_status_id").change(function(){

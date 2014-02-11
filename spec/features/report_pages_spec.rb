@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-feature 'Report pages' do
-	scenario 'User visit summary page' do
+feature 'User visit report page' do
+	scenario 'should see summary' do
 		visit summary_path
 		expect(page).to have_content('Summary Report')
+
 	end
 end

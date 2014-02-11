@@ -20,6 +20,7 @@ class Plot < ActiveRecord::Base
   validates :house_add_on_price, numericality: true
   validates :plot_add_on_price, numericality: true
 
+
   def status_name
   	self.status.name
   end
