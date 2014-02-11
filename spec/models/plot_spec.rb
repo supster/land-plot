@@ -10,7 +10,7 @@ describe Plot do
 	#}
 	#subject { @plot }
 
-	let(:plot) { FactoryGirl.create(:plot) }
+	let(:plot) { FactoryGirl.create :plot }
 	subject { plot }
 
 	it { should respond_to(:code) }
@@ -27,64 +27,84 @@ describe Plot do
 	it { should respond_to(:extra_land_price) }
 	it { should respond_to(:house_add_on_price) }
 	it { should respond_to(:plot_add_on_price) }
+	it { should respond_to(:phase_id) }
+	it { should respond_to(:contractor_pay_no) }
+	it { should respond_to(:transfer_date) }
 
 
 	it { should be_valid }	
 
-	describe "attributes" do
-		context "when code is not present" do
+	describe "#code" do
+		context "when not present" do
 			before { plot.code = "" }
-			it { should_not be_valid } 
+			it { expect(plot).to_not be_valid } 
 		end
 
-		context "when code is longer than 20" do
+		context "when longer than 20" do
 			before { plot.code = "a" * 21 }
-			it { should_not be_valid }
+			it { expect(plot).to_not be_valid }
 		end
 
-		context "when code is shorter than 2" do
+		context "when shorter than 2" do
 			before { plot.code = "a" }
-			it { should_not be_valid }
+			it { expect(plot).to_not be_valid }
 		end
-
-		context "when status id is not present" do
-			before	 { plot.status_id = nil }
-			it { should_not be_valid }
-		end
-
-		context "when size is not a number" do
-			before { plot.size = "abc" }
-			it { should_not be_valid }
-		end
-
-		context "when price is not a number" do
-			before { plot.price = "def" }
-			it { should_not be_valid }
-		end
-
-		context "when base price is not a number" do
-			before { plot.base_price = "def" }
-			it { should_not be_valid }			
-		end
-
-		context "when extra land price is not a number" do
-			before { plot.extra_land_price = "def" }
-			it { should_not be_valid }			
-		end
-
-		context "when base house add on price is not a number" do
-			before { plot.house_add_on_price = "def" }
-			it { should_not be_valid }			
-		end
-
-		context "when plot add on price is not a number" do
-			before { plot.plot_add_on_price = "def" }
-			it { should_not be_valid }			
-		end
-
 	end
 
-	describe "associations" do
-		
+	describe "#status_id" do
+
+		context "when not present" do
+			before	 { plot.status_id = nil }
+			it { expect(plot).to_not be_valid }
+		end
+
+		context "should have a corrensponding status" do
+			let(:status) { Status.find plot.status_id }
+
+			it {expect(plot.status_id).to  eq(status.id) }
+		end
+	end
+
+	context "when size is not a number" do
+		before { plot.size = "abc" }
+		it { expect(plot).to_not be_valid }
+	end
+
+	context "when price is not a number" do
+		before { plot.price = "def" }
+		it { expect(plot).to_not be_valid }
+	end
+
+	context "when base price is not a number" do
+		before { plot.base_price = "def" }
+		it { expect(plot).to_not be_valid }			
+	end
+
+	context "when extra land price is not a number" do
+		before { plot.extra_land_price = "def" }
+		it { expect(plot).to_not be_valid }			
+	end
+
+	context "when base house add on price is not a number" do
+		before { plot.house_add_on_price = "def" }
+		it { expect(plot).to_not be_valid }			
+	end
+
+	context "when plot add on price is not a number" do
+		before { plot.plot_add_on_price = "def" }
+		it { expect(plot).to_not be_valid }			
+	end
+
+	describe "#transfer_date" do
+		context "when status is not transferred" do
+			before { 
+				plot.transfer_date = '1/1/2013'
+				plot.status_id = Status.find_by_name("Available").id
+				plot.save!
+			}
+
+			it { expect(plot.transfer_date).to be_nil }
+
+		end 
 	end
 end

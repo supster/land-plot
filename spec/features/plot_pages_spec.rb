@@ -13,6 +13,11 @@ feature 'User edit plot' do
 	it { expect(page).to have_field('plot_size', type: 'text') }
 	#it { expect(page).to have_field('plot_price', type: 'text') }
 	it { expect(page).to have_field('plot_base_price', type: 'text') }
+	it { expect(page).to have_field('plot_phase_id', type: 'select') }
+	it { expect(page).to have_field('plot_contractor_pay_no', type: 'text') }
+	it { expect(page).to have_field('plot_transfer_date', type: 'text') }
+	it { expect(page).to have_field('plot_transfer_fee', type: 'text') }
+	it { expect(page).to have_field('plot_tax_fee', type: 'text') }
 	it { expect(page).to have_button('Save') }	
 
 	scenario 'with invalid price' do

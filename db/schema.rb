@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201031517) do
+ActiveRecord::Schema.define(:version => 20140211015818) do
 
   create_table "buyers", :force => true do |t|
     t.string   "first_name"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20140201031517) do
   end
 
   create_table "maps", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "phases", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -48,6 +54,11 @@ ActiveRecord::Schema.define(:version => 20140201031517) do
     t.decimal  "extra_land_price",   :default => 0.0
     t.decimal  "house_add_on_price", :default => 0.0
     t.decimal  "plot_add_on_price",  :default => 0.0
+    t.integer  "phase_id"
+    t.date     "transfer_date"
+    t.decimal  "transfer_fee"
+    t.decimal  "tax_fee"
+    t.integer  "contractor_pay_no"
   end
 
   create_table "statuses", :force => true do |t|

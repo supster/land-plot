@@ -7,6 +7,10 @@ FactoryGirl.define do
 		name "Available"
 	end
 
+	factory :phase do
+		name "A"
+	end
+
 	factory :plot do
 		code 		"A1"
 		home_type 	"V1"
@@ -23,6 +27,7 @@ FactoryGirl.define do
 		comments	"abcde"
 		map
 		status
+		phase
 	end
 
 

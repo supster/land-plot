@@ -8,8 +8,6 @@ describe "show" do
 		visit map_path(map)
 	}
 
-	it { expect(page).to have_css("div") }
-
-	#it { should have_link() }
+	it { expect(page).to have_selector 'h2', 'Real Estate Development Land Map' }
 
 end

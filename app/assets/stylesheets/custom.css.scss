@@ -6,9 +6,9 @@ body {
   margin: 0;
 }
 
-td, table{
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
 }
 
 a img {
@@ -34,7 +34,7 @@ a#logo.navbar-brand {
 /* Land plot table */
 
 .lp {
-  font-size: 14pt;
+  font-size: 0;
   display: table-cell;
   width: 50px;
   text-align: center;
@@ -44,7 +44,7 @@ a#logo.navbar-brand {
 }
 
 .lp_row {
-  font-size: 14pt;
+  font-size: 0;
   display: table;
   width: 50px;
   text-align: center;
@@ -97,19 +97,25 @@ a#logo.navbar-brand {
 }
 
 a.lp_link {
+  font-size: 14pt;
   text-decoration: none;
   color: white;
 }
 
-.lp_desc {
+.lp_desc_left {
   font-size: 10pt;
-  text-align: right;
+  font-weight: bold;
+  float: left;
   color: black;
-  margin-right: 5px;
+  width: 20%;
+  background-color: #0099FF;
 }
 
-.disable .lp_desc {
-  color: #CCC;
+.lp_desc_right {
+  font-size: 10pt;
+  float: right;
+  color: black;
+  margin-right: 3px;
 }
 
 #table-map{

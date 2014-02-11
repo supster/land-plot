@@ -7,6 +7,32 @@
 			<%= f.select :status_id, Status.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
 		</div>
 	</div>
+	<div id="transfer_info">
+		<div class="form-group">
+			<%= f.label :transfer_date, "วันที่โอน", class: "col-sm-2 col-sm-2 control-label" %>
+			<div class="col-sm-6">
+				<%= f.text_field :transfer_date, class: "form-control"  %>
+			</div>
+		</div>	
+		<div class="form-group">
+			<%= f.label :transfer_fee, "ค่าโอน", class: "col-sm-2 col-sm-2 control-label" %>
+			<div class="col-sm-6">
+				<%= f.text_field :transfer_fee, class: "form-control"  %>
+			</div>
+		</div>	
+		<div class="form-group">
+			<%= f.label :tax_fee, "ค่าภาษี", class: "col-sm-2 col-sm-2 control-label" %>
+			<div class="col-sm-6">
+				<%= f.text_field :tax_fee, class: "form-control"  %>
+			</div>
+		</div>	
+		</div>
+		<div class="form-group">
+			<%= f.label :status, "เฟส", class: "col-sm-2 col-sm-2 control-label" %>
+			<div class="col-sm-6">
+				<%= f.select :phase_id, Phase.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
+			</div>
+	</div>	
 	<div class="form-group">
 		<%= f.label :home_type, "แบบบ้าน", class: "col-sm-2 col-sm-2 control-label" %>
 		<div class="col-sm-6">
@@ -58,6 +84,13 @@
 	</div>
 
 	<div class="form-group">
+		<%= f.label :contractor_pay_no, "ค่างวดที่", class: "col-sm-2 control-label" %>
+		<div class="col-sm-6">
+			<%= f.text_field :contractor_pay_no, class: "form-control" %>
+		</div>
+	</div>
+
+	<div class="form-group">
 		<%= f.label :comments, class: "col-sm-2 control-label" %>
 		<div class="col-sm-6">
 			<%= f.text_area :comments, rows: 8, class: "form-control" %>
@@ -72,3 +105,12 @@
 		</div>
 	</div>		
 <% end %>
+
+<script>
+	$(function() {
+		var status = $("#plot_status_id option:selected").text();
+		if(status != 'Transferred')
+			$("#transfer_info").hide();
+	}
+	);
+</script>
