@@ -12,11 +12,11 @@
 	<%= link_to edit_plot_path(plot), class: "lp_link" do %>
 		<%= plot.code %>
 	<%end%>
-	<div class="lp_desc_left">
-		<%= plot.contractor_pay_no unless plot.contractor_pay_no == 5 %>
-	</div>
 	<div class="lp_desc_right">
 		<%= plot.home_type %><br/>
 		<%= plot.size %>
+	</div>
+	<div class="lp_desc_left">
+		<%= plot.contractor_pay_no unless plot.contractor_pay_no == 5 %>
 	</div>
 </div>

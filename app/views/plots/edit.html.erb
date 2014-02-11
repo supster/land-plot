@@ -111,6 +111,16 @@
 		var status = $("#plot_status_id option:selected").text();
 		if(status != 'Transferred')
 			$("#transfer_info").hide();
+
+		//bind select change function
+		$("#plot_status_id").change(function(){
+			if($(this).find("option:selected").text() != 'Transferred'){
+				$("#transfer_info").hide();
+			}else{
+				$("#transfer_info").show();
+			}
+		}
+		)
 	}
 	);
 </script>
