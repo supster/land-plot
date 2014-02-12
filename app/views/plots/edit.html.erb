@@ -1,111 +1,141 @@
 <%= render "shared/error", error: @plot %>
 <h2>Plot Information: <%= @plot.code %></h2>
 <%= form_for @plot, html: {class: 'form-horizontal'} do |f| %>
-	<div class="form-group">
-		<%= f.label :status, "สถานะ", class: "col-sm-2 col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.select :status_id, Status.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default col-md-12">
+			<h4>ข้อมูลทั่วไป</h4>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.label :status, "สถานะ", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.select :status_id, Status.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
+					</div>
+				</div>		
+				<div class="form-group">
+					<%= f.label :status, "เฟส", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.select :phase_id, Phase.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
+					</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :home_type, "แบบบ้าน", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :home_type, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :size, "เนื้อที่ดิน", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :size, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :deed_no, "เลขที่โฉนด", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :deed_no, class: "form-control" %>
+					</div>
+				</div>	
+			</div>	
 		</div>
 	</div>
-	<div id="transfer_info">
-		<div class="form-group">
-			<%= f.label :transfer_date, "วันที่โอน", class: "col-sm-2 col-sm-2 control-label" %>
-			<div class="col-sm-6">
-				<%= f.text_field :transfer_date, 
-								 value: @plot.transfer_date.nil? ? nil : l(@plot.transfer_date), 
-								 class: "form-control"  %>
+	<div class="col-md-6">
+		<div class="panel panel-default col-md-12">
+			<h4>ข้อมูลราคา</h4>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.label :base_price, "บ้านและที่ดิน", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :base_price, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :extra_land_price, "ค่าที่ดินเพิ่ม", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :extra_land_price, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :plot_add_on_price, "ค่าแปลงพิเศษ", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :plot_add_on_price, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :house_add_on_price, "ค่าต่อเติม", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :house_add_on_price, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label">รวมราคา</label>
+					<div class="col-md-8">
+						<%= number_to_currency(@plot.total_price) %>
+					</div>
+				</div>
 			</div>
-		</div>	
-		<div class="form-group">
-			<%= f.label :transfer_fee, "ค่าโอน", class: "col-sm-2 col-sm-2 control-label" %>
-			<div class="col-sm-6">
-				<%= f.text_field :transfer_fee, class: "form-control"  %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default col-md-12">
+			<h4>ข้อมูลการก่อสร้าง</h4>
+			<div class="form-group">
+				<%= f.label :contractor_pay_no, "ก่อสร้างงวดที่", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :contractor_pay_no, class: "form-control" %>
+				</div>
 			</div>
-		</div>	
-		<div class="form-group">
-			<%= f.label :tax_fee, "ค่าภาษี", class: "col-sm-2 col-sm-2 control-label" %>
-			<div class="col-sm-6">
-				<%= f.text_field :tax_fee, class: "form-control"  %>
-			</div>
-		</div>	
-		</div>
-		<div class="form-group">
-			<%= f.label :status, "เฟส", class: "col-sm-2 col-sm-2 control-label" %>
-			<div class="col-sm-6">
-				<%= f.select :phase_id, Phase.all.collect { |s| [s.name, s.id] }, {}, {class: "form-control"} %>
-			</div>
-	</div>	
-	<div class="form-group">
-		<%= f.label :home_type, "แบบบ้าน", class: "col-sm-2 col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :home_type, class: "form-control" %>
 		</div>
 	</div>
-	<div class="form-group">
-		<%= f.label :size, "เนื้อที่ดิน", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :size, class: "form-control" %>
+	<div class="col-md-6">
+		<div id="transfer_info" class="panel panel-default col-md-12">
+			<h4>ข้อมูลการโอน</h4>
+			<div class="form-group">
+				<%= f.label :transfer_date, "วันที่โอน", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :transfer_date, 
+									 value: @plot.transfer_date.nil? ? nil : l(@plot.transfer_date), 
+									 class: "form-control"  %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :transfer_fee, "ค่าโอน", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :transfer_fee, class: "form-control"  %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :tax_fee, "ค่าภาษี", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :tax_fee, class: "form-control"  %>
+				</div>
+			</div>	
 		</div>
 	</div>
-	<div class="form-group">
-		<%= f.label :deed_no, "เลขที่โฉนด", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :deed_no, class: "form-control" %>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default col-md-12">
+			<h4>Comments</h4>
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-8">
+					<%= f.text_area :comments, rows: 8, class: "form-control" %>
+				</div>
+			</div>		
 		</div>
 	</div>
-	<div class="form-group">
-		<%= f.label :base_price, "ราคาบ้านและที่ดิน", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :base_price, class: "form-control" %>
-		</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+	<%= f.submit "Save", class: "btn btn-sm btn-primary",
+				style: "width: 120px" %>
+	<%= link_to "Cancel", map_path(@plot.map_id),
+				class: "btn btn-sm btn-primary", style: "width: 120px" %>
 	</div>
-	<div class="form-group">
-		<%= f.label :extra_land_price, "ค่าที่ดินเพิ่ม", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :extra_land_price, class: "form-control" %>
-		</div>
-	</div>
-	<div class="form-group">
-		<%= f.label :plot_add_on_price, "ค่าแปลงพิเศษ", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :plot_add_on_price, class: "form-control" %>
-		</div>
-	</div>
-	<div class="form-group">
-		<%= f.label :house_add_on_price, "ค่าต่อเติม", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :house_add_on_price, class: "form-control" %>
-		</div>
-	</div>
+</div>
 
-	<div class="form-group">
-		<label class="col-sm-2 control-label">รวมราคา</label>
-		<div class="col-sm-6">
-			<%= number_to_currency(@plot.total_price) %>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :contractor_pay_no, "ค่างวดที่", class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_field :contractor_pay_no, class: "form-control" %>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :comments, class: "col-sm-2 control-label" %>
-		<div class="col-sm-6">
-			<%= f.text_area :comments, rows: 8, class: "form-control" %>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-6">
-		<%= f.submit "Save", class: "btn btn-sm btn-primary",
-					style: "width: 120px" %>
-		<%= link_to "Cancel", map_path(@plot.map_id),
-					class: "btn btn-sm btn-primary", style: "width: 120px" %>
-		</div>
-	</div>		
 <% end %>
 
 <script>
