@@ -11,7 +11,7 @@ class Plot < ActiveRecord::Base
 
   before_save :update_transfer_fields
 
-  validates :code, presence: true, length: { in: 2..20 }
+  validates :code, presence: true, length: { in: 2..20 }, uniqueness: true
   validates :status_id, presence: true
   validates :size, numericality: true, allow_nil: true
   validates :price, numericality: true, allow_nil: true

@@ -1,6 +1,32 @@
 <h2>Summary Report</h2>
 <table class="table table-bordered">
 	<tr>
+		<th>Phase</th>
+		<% @statuses.each do |st| %>
+			<th width="15%"><%= st.name %></th>
+		<% end %>
+		<th>Total</th>
+	</tr>
+	<% @phases.each do |ph| %>
+		<tr>
+			<td><%= ph.name %></td>
+			<% @statuses.each do |st|%>
+				<td align="right"><%= ph.plots.where("status_id = ?", st.id).count %></td>
+			<% end %>
+			<td align="right"><%= ph.plots.count %></td>
+		</tr>
+	<% end %>
+	<tr>
+		<td align="right"><b>Total:</b></td>
+		<% @statuses.each do |st|%>
+			<td align="right"><%= st.plots.count %></td>
+		<% end %>		
+		<td align="right"><%= @plot_count %></td>
+	</tr>
+</table>
+
+<table class="table table-bordered">
+	<tr>
 		<th>Status</th>
 		<th>Number</th>
 		<th>Percent</th>

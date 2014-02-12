@@ -34,7 +34,6 @@ Spork.prefork do
  
     # Clean up the database
     config.before(:suite) { DatabaseCleaner.strategy = :truncation }
-    config.before(:suite) { DatabaseCleaner.orm      = :mongoid }
     config.before(:each)  { DatabaseCleaner.clean }
 
   # ## Mock Framework
@@ -67,6 +66,7 @@ Spork.prefork do
   # Capybara DSL
   config.include Capybara::DSL
 
+  config.include FactoryGirl::Syntax::Methods
 
   end
 end

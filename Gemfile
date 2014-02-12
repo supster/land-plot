@@ -24,7 +24,7 @@ group :development, :test do
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
   gem 'webrat', "~> 0.7.3"
-  # gem 'launchy', '2.1.0'
+  gem 'launchy', "~> 2.4.2"
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'
 end

@@ -37,17 +37,27 @@ describe Plot do
 	describe "#code" do
 		context "when not present" do
 			before { plot.code = "" }
-			it { expect(plot).to_not be_valid } 
+			it { expect(plot).not_to be_valid } 
 		end
 
 		context "when longer than 20" do
 			before { plot.code = "a" * 21 }
-			it { expect(plot).to_not be_valid }
+			it { expect(plot).not_to be_valid }
 		end
 
 		context "when shorter than 2" do
 			before { plot.code = "a" }
-			it { expect(plot).to_not be_valid }
+			it { expect(plot).not_to be_valid }
+		end
+
+		context "when not unique" do
+			before {
+				@dup_plot = plot.dup
+				@dup_plot.code = plot.code
+				@dup_plot.save
+			}
+			
+			it { expect(@dup_plot).not_to be_valid }
 		end
 	end
 
@@ -55,7 +65,7 @@ describe Plot do
 
 		context "when not present" do
 			before	 { plot.status_id = nil }
-			it { expect(plot).to_not be_valid }
+			it { expect(plot).not_to be_valid }
 		end
 
 		context "should have a corrensponding status" do
@@ -67,40 +77,41 @@ describe Plot do
 
 	context "when size is not a number" do
 		before { plot.size = "abc" }
-		it { expect(plot).to_not be_valid }
+		it { expect(plot).not_to be_valid }
 	end
 
 	context "when price is not a number" do
 		before { plot.price = "def" }
-		it { expect(plot).to_not be_valid }
+		it { expect(plot).not_to be_valid }
 	end
 
 	context "when base price is not a number" do
 		before { plot.base_price = "def" }
-		it { expect(plot).to_not be_valid }			
+		it { expect(plot).not_to be_valid }			
 	end
 
 	context "when extra land price is not a number" do
 		before { plot.extra_land_price = "def" }
-		it { expect(plot).to_not be_valid }			
+		it { expect(plot).not_to be_valid }			
 	end
 
 	context "when base house add on price is not a number" do
 		before { plot.house_add_on_price = "def" }
-		it { expect(plot).to_not be_valid }			
+		it { expect(plot).not_to be_valid }			
 	end
 
 	context "when plot add on price is not a number" do
 		before { plot.plot_add_on_price = "def" }
-		it { expect(plot).to_not be_valid }			
+		it { expect(plot).not_to be_valid }			
 	end
 
 	describe "#transfer_date" do
 		context "when status is not transferred" do
+			let(:cs_status) { FactoryGirl.create(:cs_status) }
 			before { 
 				plot.transfer_date = '1/1/2013'
-				plot.status_id = Status.find_by_name("Available").id
-				plot.save!
+				plot.status_id = cs_status.id
+				plot.save
 			}
 
 			it { expect(plot.transfer_date).to be_nil }
