@@ -73,6 +73,12 @@
 						<%= number_to_currency(@plot.total_price) %>
 					</div>
 				</div>
+				<div class="form-group">
+					<%= f.label :common_charge, "ค่าส่วนกลาง", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :common_charge, class: "form-control" %>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -124,17 +130,49 @@
 				</div>
 			</div>	
 			<div class="form-group">
+				<%= f.label :tax_price, "ราคาทุนทรัพย์", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :tax_price, class: "form-control"  %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :appr_price, "ราคาประเมิน", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :appr_price, class: "form-control"  %>
+				</div>
+			</div>	
+
+			<div class="form-group">
 				<%= f.label :transfer_fee, "ค่าธรรมเนียม", class: "col-md-3 control-label" %>
 				<div class="col-md-8">
 					<%= f.text_field :transfer_fee, class: "form-control"  %>
 				</div>
 			</div>	
 			<div class="form-group">
-				<%= f.label :tax_fee, "ค่าภาษี", class: "col-md-3 control-label" %>
+				<%= f.label :personal_tax, "ภาษีเงินได้", class: "col-md-3 control-label" %>
 				<div class="col-md-8">
-					<%= f.text_field :tax_fee, class: "form-control"  %>
+					<%= f.text_field :personal_tax, class: "form-control"  %>
 				</div>
 			</div>	
+			<div class="form-group">
+				<%= f.label :special_tax, "ภาษีธุรกิจเฉพาะ", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :special_tax, class: "form-control"  %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :local_tax, "รายได้ส่วนท้องถิ่น", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :local_tax, class: "form-control"  %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :other_fee, "อื่นๆ", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.text_field :other_fee, class: "form-control"  %>
+				</div>
+			</div>	
+
 		</div>
 	</div>
 </div>
@@ -151,12 +189,13 @@
 <% end %>
 
 <script>
-	/*$(function() {
-		var status = $("#plot_status_id option:selected").text();
+	$(function() {
+	  
+	  $("#plot_transfer_date").datepicker();
+
+		/*var status = $("#plot_status_id option:selected").text();
 		if(status != 'Transferred')
 			$("#transfer_info").hide();
-
-	    $( "#plot_transfer_date" ).datepicker();
 
 		//bind select change function
 		$("#plot_status_id").change(function(){
@@ -166,7 +205,7 @@
 				$("#transfer_info").show();
 			}
 		}
-		)
+		)*/
 	}
-	);*/
+	);
 </script>

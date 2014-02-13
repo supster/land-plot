@@ -17,7 +17,6 @@ describe Plot do
 	it { should respond_to(:row) } 
 	it { should respond_to(:col) }
 	it { should respond_to(:group_id) }	
-	it { should respond_to(:price)  }
 	it { should respond_to(:status_id) }
 	it { should respond_to(:status) }
 	it { should respond_to(:status_name) }
@@ -27,11 +26,20 @@ describe Plot do
 	it { should respond_to(:extra_land_price) }
 	it { should respond_to(:house_add_on_price) }
 	it { should respond_to(:plot_add_on_price) }
+	it { should respond_to(:common_charge) }
+
 	it { should respond_to(:phase_id) }
 	it { should respond_to(:contractor_pay_no) }
 	it { should respond_to(:transfer_date) }
 	it { should respond_to(:contractor_id) }
 	it { should respond_to(:foreman_id) }
+
+	it { should respond_to(:tax_price) }
+	it { should respond_to(:appr_price) }
+	it { should respond_to(:personal_tax) }
+	it { should respond_to(:special_tax) }
+	it { should respond_to(:local_tax) }
+	it { should respond_to(:other_fee) }
 
 
 	it { should be_valid }	
@@ -78,11 +86,6 @@ describe Plot do
 		it { expect(plot).not_to be_valid }
 	end
 
-	context "when price is not a number" do
-		before { plot.price = "def" }
-		it { expect(plot).not_to be_valid }
-	end
-
 	context "when base price is not a number" do
 		before { plot.base_price = "def" }
 		it { expect(plot).not_to be_valid }			
@@ -103,16 +106,48 @@ describe Plot do
 		it { expect(plot).not_to be_valid }			
 	end
 
+
+	context "when plot common charge is not a number" do
+		before { plot.common_charge = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
 	context "when transfer fee is not a number" do
 		before { plot.transfer_fee = "def" }
 		it { expect(plot).not_to be_valid }			
 	end
 
-	context "when tax fee is not a number" do
-		before { plot.tax_fee = "def" }
+	context "when tax price is not a number" do
+		before { plot.tax_price = "def" }
 		it { expect(plot).not_to be_valid }			
 	end
 
+	context "when appr price is not a number" do
+		before { plot.appr_price = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+	context "when personal tax is not a number" do
+		before { plot.personal_tax = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+	context "when special tax is not a number" do
+		before { plot.special_tax = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+	context "when local tax is not a number" do
+		before { plot.local_tax = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+	context "when other fee is not a number" do
+		before { plot.other_fee = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+=begin
 	describe "#transfer_date" do
 		context "when status is not transferred" do
 			let(:cs_status) { FactoryGirl.create(:cs_status) }
@@ -126,6 +161,7 @@ describe Plot do
 
 		end 
 	end
+=end
 
 	describe "#phase" do
 		it { expect(plot.phase).to be_valid	}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140213140415) do
+ActiveRecord::Schema.define(:version => 20140213155800) do
 
   create_table "buyers", :force => true do |t|
     t.string   "first_name"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20140213140415) do
     t.integer  "row"
     t.integer  "col"
     t.integer  "group_id"
-    t.decimal  "price",              :default => 0.0
     t.integer  "status_id"
     t.string   "deed_no"
     t.text     "comments"
@@ -69,10 +68,16 @@ ActiveRecord::Schema.define(:version => 20140213140415) do
     t.integer  "phase_id"
     t.date     "transfer_date"
     t.decimal  "transfer_fee"
-    t.decimal  "tax_fee"
     t.integer  "contractor_pay_no"
     t.integer  "contractor_id"
     t.integer  "foreman_id"
+    t.decimal  "tax_price"
+    t.decimal  "appr_price"
+    t.decimal  "personal_tax"
+    t.decimal  "special_tax"
+    t.decimal  "local_tax"
+    t.decimal  "other_fee"
+    t.decimal  "common_charge"
   end
 
   create_table "statuses", :force => true do |t|

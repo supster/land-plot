@@ -9,7 +9,6 @@ feature 'User edits a plot' do
 
 	it { expect(page).to have_content(plot.code) }
 
-	#it { expect(page).to have_field('plot_price', type: 'text') }
 	it { expect(page).to have_field('plot_status_id', type: 'select') }
 	it { expect(page).to have_field('plot_phase_id', type: 'select') }
 	it { expect(page).to have_field('plot_home_type', type: 'text') }
@@ -19,11 +18,19 @@ feature 'User edits a plot' do
 	it { expect(page).to have_field('plot_extra_land_price', type: 'text') }
 	it { expect(page).to have_field('plot_house_add_on_price', type: 'text') }
 	it { expect(page).to have_field('plot_plot_add_on_price', type: 'text') }
+	it { expect(page).to have_field('plot_common_charge', type: 'text') }
 
 	it { expect(page).to have_field('plot_contractor_pay_no', type: 'text') }
 	it { expect(page).to have_field('plot_transfer_date', type: 'text') }
 	it { expect(page).to have_field('plot_transfer_fee', type: 'text') }
-	it { expect(page).to have_field('plot_tax_fee', type: 'text') }
+	it { expect(page).to have_field('plot_tax_price', type: 'text') }
+	it { expect(page).to have_field('plot_appr_price', type: 'text') }
+	it { expect(page).to have_field('plot_personal_tax', type: 'text') }
+	it { expect(page).to have_field('plot_special_tax', type: 'text') }
+	it { expect(page).to have_field('plot_local_tax', type: 'text') }
+	it { expect(page).to have_field('plot_other_fee', type: 'text') }
+
+
 	it { expect(page).to have_field('plot_contractor_id', type: 'select') }
 	it { expect(page).to have_field('plot_foreman_id', type: 'select') }
 	it { expect(page).to have_button('Save') }	
@@ -41,10 +48,13 @@ feature 'User edits a plot' do
 		fill_in	'plot_contractor_pay_no', with: 5
 		fill_in	'plot_transfer_date', with: '2/14/2014'
 		fill_in	'plot_transfer_fee', with: 100
-		fill_in	'plot_tax_fee', with: 101
 
 		select 	'Lan', from: 'plot_contractor_id'
 		select	'James', from: 'plot_foreman_id'
+
+		click_button 'Save'
+
+		expect(page).to have_content('Successful')
 	end
 
 	scenario 'with invalid information' do

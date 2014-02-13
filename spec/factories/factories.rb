@@ -34,7 +34,6 @@ FactoryGirl.define do
 		row					1
 		col 				1
 		group_id 			1
-		price				100000
 		base_price			100
 		extra_land_price 	100
 		house_add_on_price	100
