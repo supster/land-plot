@@ -19,6 +19,14 @@ FactoryGirl.define do
 		name "A"
 	end
 
+	factory :contractor do
+		name "Lan"
+	end
+
+	factory :foreman do
+		name "James"
+	end
+
 	factory :plot do
 		sequence(:code) 	{ |n| "A#{n}" }
 		home_type 			"V1"
@@ -38,6 +46,8 @@ FactoryGirl.define do
 			plot.map = Map.find_by_name("Villa Nara") 	|| create(:map)		
 			plot.phase = Phase.find_by_name("A") || create(:phase)
 			plot.status = Status.find_by_name("Available") || create(:status)
+			plot.contractor = Contractor.find_by_name("Lan") || create(:contractor)
+			plot.foreman = Foreman.find_by_name("James") || create(:foreman)
 		end
 
 		factory :tf_plot do

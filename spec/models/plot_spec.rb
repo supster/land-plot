@@ -30,6 +30,8 @@ describe Plot do
 	it { should respond_to(:phase_id) }
 	it { should respond_to(:contractor_pay_no) }
 	it { should respond_to(:transfer_date) }
+	it { should respond_to(:contractor_id) }
+	it { should respond_to(:foreman_id) }
 
 
 	it { should be_valid }	
@@ -61,17 +63,13 @@ describe Plot do
 		end
 	end
 
-	describe "#status_id" do
+	describe "#status" do
+
+		it {expect(plot.status).to  be_valid }
 
 		context "when not present" do
 			before	 { plot.status_id = nil }
 			it { expect(plot).not_to be_valid }
-		end
-
-		context "should have a corrensponding status" do
-			let(:status) { Status.find plot.status_id }
-
-			it {expect(plot.status_id).to  eq(status.id) }
 		end
 	end
 
@@ -105,6 +103,16 @@ describe Plot do
 		it { expect(plot).not_to be_valid }			
 	end
 
+	context "when transfer fee is not a number" do
+		before { plot.transfer_fee = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
+	context "when tax fee is not a number" do
+		before { plot.tax_fee = "def" }
+		it { expect(plot).not_to be_valid }			
+	end
+
 	describe "#transfer_date" do
 		context "when status is not transferred" do
 			let(:cs_status) { FactoryGirl.create(:cs_status) }
@@ -117,5 +125,22 @@ describe Plot do
 			it { expect(plot.transfer_date).to be_nil }
 
 		end 
+	end
+
+	describe "#phase" do
+		it { expect(plot.phase).to be_valid	}
+
+		context "when not present" do
+			before	 { plot.phase_id = nil }
+			it { expect(plot).not_to be_valid }
+		end
+	end
+
+	describe "#contractor" do
+		it  { expect(plot.contractor).to be_valid }
+	end
+
+	describe "#foreman" do
+		it { expect(plot.foreman).to be_valid }
 	end
 end

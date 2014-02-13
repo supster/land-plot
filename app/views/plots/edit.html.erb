@@ -87,7 +87,30 @@
 					<%= f.text_field :contractor_pay_no, class: "form-control" %>
 				</div>
 			</div>
+
+			<div class="form-group">
+				<%= f.label :contractor, "ผู้รับเหมา", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.select :contractor_id, Contractor.all.collect { |s| [s.name, s.id] }, {include_blank: true}, {class: "form-control"} %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :foreman, "ผู้คุม", class: "col-md-3 control-label" %>
+				<div class="col-md-8">
+					<%= f.select :foreman_id, Foreman.all.collect { |s| [s.name, s.id]}, {include_blank: true}, {class: "form-control"} %>
+				</div>
+			</div>
 		</div>
+
+		<div class="panel panel-default col-md-12">
+			<h4>Comments</h4>
+			<div class="form-group">
+				<div class="col-md-offset-3 col-md-8">
+					<%= f.text_area :comments, rows: 8, class: "form-control" %>
+				</div>
+			</div>		
+		</div>
+
 	</div>
 	<div class="col-md-6">
 		<div id="transfer_info" class="panel panel-default col-md-12">
@@ -101,7 +124,7 @@
 				</div>
 			</div>	
 			<div class="form-group">
-				<%= f.label :transfer_fee, "ค่าโอน", class: "col-md-3 control-label" %>
+				<%= f.label :transfer_fee, "ค่าธรรมเนียม", class: "col-md-3 control-label" %>
 				<div class="col-md-8">
 					<%= f.text_field :transfer_fee, class: "form-control"  %>
 				</div>
@@ -115,18 +138,7 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-6">
-		<div class="panel panel-default col-md-12">
-			<h4>Comments</h4>
-			<div class="form-group">
-				<div class="col-md-offset-3 col-md-8">
-					<%= f.text_area :comments, rows: 8, class: "form-control" %>
-				</div>
-			</div>		
-		</div>
-	</div>
-</div>
+
 <div class="row">
 	<div class="col-md-6">
 	<%= f.submit "Save", class: "btn btn-sm btn-primary",
@@ -139,7 +151,7 @@
 <% end %>
 
 <script>
-	$(function() {
+	/*$(function() {
 		var status = $("#plot_status_id option:selected").text();
 		if(status != 'Transferred')
 			$("#transfer_info").hide();
@@ -156,5 +168,5 @@
 		}
 		)
 	}
-	);
+	);*/
 </script>
