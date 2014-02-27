@@ -5,15 +5,16 @@ class Plot < ActiveRecord::Base
                   :plot_add_on_price, :common_charge, :phase_id, 
                   :transfer_date, :transfer_fee, :tax_price, 
                   :appr_price, :personal_tax, :special_tax, :local_tax, :other_fee,
-                  :contractor_pay_no, :contractor_id, :foreman_id
+                  :contractor_pay_no, :contractor_id, :foreman_id,
+                  :buyer_name, :buyer_phone
   belongs_to  :map
-  belongs_to  :buyer
+  #belongs_to  :buyer
   belongs_to  :status
   belongs_to  :phase
   belongs_to  :contractor
   belongs_to  :foreman
 
-  #before_save :update_transfer_fields
+  #before_validation :unformat_currency #:update_transfer_fields
 
   validates :code, presence: true, length: { in: 2..20 }, uniqueness: true
   validates :status_id, presence: true
@@ -47,5 +48,20 @@ class Plot < ActiveRecord::Base
       self.transfer_date = nil
       self.transfer_fee = nil
     end
+  end
+
+  def unformat_currency
+    if self.base_price != "def"
+      self.base_price = self.base_price.to_s.gsub(',', '') 
+    end
+    #if attribute_present?("number")
+
+    #if !self.base_price.is_a?(Numeric) and !self.base_price.nil?
+    #  self.base_price.to_s.gsub(',', '').to_f!
+    #end
+  end
+
+  def is_currency number
+    /[^0-9,\.]/.match(number.to_s) == nil ? true : false
   end
 end

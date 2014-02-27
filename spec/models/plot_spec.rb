@@ -11,7 +11,6 @@ describe Plot do
 	#subject { @plot }
 
 	let(:plot) { FactoryGirl.create :plot }
-	subject { plot }
 
 	it { should respond_to(:code) }
 	it { should respond_to(:row) } 
@@ -41,8 +40,10 @@ describe Plot do
 	it { should respond_to(:local_tax) }
 	it { should respond_to(:other_fee) }
 
+	it { should respond_to(:buyer_name) }
+	it { should respond_to(:buyer_phone) }
 
-	it { should be_valid }	
+	it { expect(plot).to be_valid }	
 
 	describe "#code" do
 		context "when not present" do
@@ -90,6 +91,11 @@ describe Plot do
 		before { plot.base_price = "def" }
 		it { expect(plot).not_to be_valid }			
 	end
+
+	#context "when base price is formatted currency" do
+	#	before { plot.base_price = "123,560.50" }
+	#	it { expect(plot).to be_valid }			
+	#end
 
 	context "when extra land price is not a number" do
 		before { plot.extra_land_price = "def" }

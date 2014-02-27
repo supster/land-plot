@@ -36,6 +36,18 @@
 						<%= f.text_field :deed_no, class: "form-control" %>
 					</div>
 				</div>	
+				<div class="form-group">
+					<%= f.label :buyer_name, "ผู้ซื้อ", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :buyer_name, class: "form-control" %>
+					</div>
+				</div>	
+				<div class="form-group">
+					<%= f.label :buyer_phone, "โทรศัพท์ผู้ซื้อ", class: "col-md-3 control-label" %>
+					<div class="col-md-8">
+						<%= f.text_field :buyer_phone, class: "form-control" %>
+					</div>
+				</div>	
 			</div>	
 		</div>
 	</div>
@@ -193,6 +205,24 @@
 	  
 	  $("#plot_transfer_date").datepicker();
 
+	  //format numbers
+	  formatCurrencyField($("#plot_base_price"));
+	  formatCurrencyField($("#plot_extra_land_price"));
+	  formatCurrencyField($("#plot_house_add_on_price"));
+	  formatCurrencyField($("#plot_plot_add_on_price"));
+	  formatCurrencyField($("#plot_common_charge"));
+
+	  formatCurrencyField($("#plot_tax_price"));
+	  formatCurrencyField($("#plot_appr_price"));
+	  formatCurrencyField($("#plot_personal_tax"));
+	  formatCurrencyField($("#plot_transfer_fee"));
+
+	  formatCurrencyField($("#plot_special_tax"));
+	  formatCurrencyField($("#plot_local_tax"));
+	  formatCurrencyField($("#plot_other_fee"));
+
+	  $("input[value='Save']").on("click", reformatCurrency);
+
 		/*var status = $("#plot_status_id option:selected").text();
 		if(status != 'Transferred')
 			$("#transfer_info").hide();
@@ -208,4 +238,68 @@
 		)*/
 	}
 	);
+
+function reformatCurrency(){
+	$("#plot_base_price").val($("#plot_base_price").val().replace(/,/g, ''));
+	$("#plot_extra_land_price").val($("#plot_extra_land_price").val().replace(/,/g, ''));
+	$("#plot_house_add_on_price").val($("#plot_house_add_on_price").val().replace(/,/g, ''));
+	$("#plot_plot_add_on_price").val($("#plot_plot_add_on_price").val().replace(/,/g, ''));
+	$("#plot_common_charge").val($("#plot_common_charge").val().replace(/,/g, ''));
+
+	$("#plot_tax_price").val($("#plot_tax_price").val().replace(/,/g, ''));
+	$("#plot_appr_price").val($("#plot_appr_price").val().replace(/,/g, ''));
+	$("#plot_personal_tax").val($("#plot_personal_tax").val().replace(/,/g, ''));
+	$("#plot_transfer_fee").val($("#plot_transfer_fee").val().replace(/,/g, ''));
+
+	$("#plot_special_tax").val($("#plot_special_tax").val().replace(/,/g, ''));
+	$("#plot_local_tax").val($("#plot_local_tax").val().replace(/,/g, ''));
+	$("#plot_other_fee").val($("#plot_other_fee").val().replace(/,/g, ''));
+	return true;
+}
+
+function formatCurrencyField(txt_field) {
+    formatCurrency(txt_field);
+	txt_field.change(function() {
+		formatCurrency($(this));
+	});
+}
+
+function formatCurrency(txt_field){
+    var val_num = txt_field.val();
+    //make sure it's a number
+    if (!isNaN(val_num) && val_num != "") {
+        //find decimal, whatever is after decimal leave it alone or add extra digit if length is 1
+        var dec = val_num.search(/\./);
+        var a = new Array();
+        var pre_dec;
+        var sign = "";
+        if(val_num.substring(0,1) == "-" || val_num.substring(0,1) == "+"){
+        	sign =  val_num.substring(0,1);
+        }
+
+        if (dec != -1) {
+            var post_dec = val_num.substring(dec);
+            if (post_dec.length <= 2) {
+                post_dec = post_dec + "0";
+            }
+	        pre_dec = val_num.substring(sign.length, dec);
+        }else{
+        	post_dec = ".00"
+	        pre_dec = val_num.substring(sign.length);
+        }
+
+
+        while (true) {
+            var n = pre_dec.length;
+            if (n > 3) {
+                a.push(pre_dec.substring(n - 3, n));
+                pre_dec = pre_dec.substring(0, n - 3);
+            } else {
+                a.push(pre_dec);
+                break;
+            }
+        }
+       	txt_field.val(sign + a.reverse().join(",") + post_dec);
+    }
+}
 </script>

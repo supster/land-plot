@@ -52,6 +52,9 @@ feature 'User edits a plot' do
 		select 	'Lan', from: 'plot_contractor_id'
 		select	'James', from: 'plot_foreman_id'
 
+		fill_in	'plot_buyer_name', with: "Supatra"
+		fill_in	'plot_buyer_phone', with: "45003"
+
 		click_button 'Save'
 
 		expect(page).to have_content('Successful')
