@@ -1,13 +1,19 @@
 require 'spec_helper'
+require_relative 'session_helpers'
 
-describe "show" do
-	let(:map) { FactoryGirl.create(:map) }
-	let(:plot) { FactoryGirl.create(:plot) }
-	
-	before {
+feature "Map Page" do
+	include Features::SessionHelpers
+
+	scenario "without sign in" do
+		map = FactoryGirl.create(:map)
+		sign_out
 		visit map_path(map)
-	}
+		expect(page).to have_content "Please sign in to continue."
+	end
 
-	it { expect(page).to have_selector 'h2', 'Real Estate Development Land Map' }
-
+	scenario "with valid sign in" do
+		map = FactoryGirl.create(:map)
+		sign_in
+		expect(page).to have_selector 'h2', 'Real Estate Development Land Map'
+	end
 end

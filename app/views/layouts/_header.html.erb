@@ -2,15 +2,18 @@
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="container">
 	  <div class="navbar-header">
-	    <%= link_to "", map_path(1), {id: "logo", class: 'navbar-brand'}%>
+	    <%= link_to "", root_path, {id: "logo", class: 'navbar-brand'}%>
 	  </div>
   
+    <% if signed_in? %>
  		<!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= map_path(1) %>">Map</a></li>
+        <li><a href="<%= map_path($map_id) %>">Map</a></li>
         <li><a href="<%= summary_path %>">Summary Report</a></li>
+        <li><%= button_to 'Sign Out', signout_path, method: :delete, class: "btn btn-default navbar-btn" %></li> 
       </ul>
     </div><!-- /.navbar-collapse -->
+    <% end %>
   </div>
  </nav>

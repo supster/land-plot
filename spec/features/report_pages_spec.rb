@@ -1,7 +1,13 @@
 require 'spec_helper'
+require_relative 'session_helpers'
 
 feature 'User visit report page' do
+	include Features::SessionHelpers
+
 	scenario 'should see summary' do
+
+		FactoryGirl.create(:map)
+		sign_in
 
 		FactoryGirl.create_list :plot, 2
 		FactoryGirl.create_list :tf_plot, 3

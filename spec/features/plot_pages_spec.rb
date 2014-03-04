@@ -1,9 +1,13 @@
 require 'spec_helper'
+require_relative 'session_helpers'
 
 feature 'User edits a plot' do
+	include Features::SessionHelpers
 
 	let(:plot) { FactoryGirl.create(:plot) }
 	before {
+		map = FactoryGirl.create(:map)
+		sign_in
 		visit edit_plot_path(plot)
 	}
 

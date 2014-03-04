@@ -2,9 +2,14 @@ LandPlot::Application.routes.draw do
   #get "maps/show"
   resources :maps, only: [:index, :show]
   resources :plots
+  resources :sessions, only: [:create, :destroy]
 
-  root to: "maps#index"
+  root to: "welcome#show"
+  
   get 'summary', to: 'reports#show'
+
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

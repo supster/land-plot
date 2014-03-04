@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
-
+  before_filter :signed_in_user
+	
 	def show
 		@statuses = Status.all.sort
 		@phases = Phase.includes(:plots) 

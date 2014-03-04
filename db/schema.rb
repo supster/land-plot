@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140226003049) do
+ActiveRecord::Schema.define(:version => 20140303211952) do
 
   create_table "buyers", :force => true do |t|
     t.string   "first_name"
@@ -88,5 +88,16 @@ ActiveRecord::Schema.define(:version => 20140226003049) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.boolean  "admin"
+    t.string   "remember_token"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

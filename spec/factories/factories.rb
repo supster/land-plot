@@ -1,5 +1,6 @@
 FactoryGirl.define do
 	factory :map do
+		id   1
 		name "Villa Nara"
 	end
 
@@ -55,5 +56,14 @@ FactoryGirl.define do
 			end
 		end
 	end
+
+  factory :user do
+    email 	 "superspt@gmail.com"
+    admin 	 false
+    password "test12345"
+    #remember_token ""
+    #password_digest ""
+  end
+
 	
 end

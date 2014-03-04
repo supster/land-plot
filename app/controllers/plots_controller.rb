@@ -1,4 +1,6 @@
 class PlotsController < ApplicationController
+  before_filter :signed_in_user
+
 	def edit
 		@plot = Plot.find(params[:id])
 	end
