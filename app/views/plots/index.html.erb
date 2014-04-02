@@ -1,0 +1,26 @@
+Plots
+<%= link_to "New Plot", new_plot_path, class: "btn btn-primary" %>
+<% @phases.each do |phase| %>
+	<%= link_to phase.name, plots_path(phase: phase.id) %>
+<% end %>
+<%= link_to 'All', plots_path %>
+<table class="table table-striped">
+	<tH>
+		<td>Code</td>
+		<td>Home Type</td>
+		<td>Status</td>
+		<td></td>
+	</tH>
+	<tbody>
+	<% @plots.each do |plot| %>
+	<tr>
+		<td></td>
+		<td><%=plot.code%></td>
+		<td><%=plot.home_type%></td>
+		<td><%=plot.status_name%></td>
+		<td align="right">
+		</td>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
