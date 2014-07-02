@@ -38,7 +38,12 @@ class Plot < ActiveRecord::Base
   end
   
   def total_price
-    self.base_price + self.extra_land_price + self.house_add_on_price + self.plot_add_on_price
+    base = !self.base_price.nil? ? self.base_price : 0
+    extra_land = !self.extra_land_price.nil? ? self.extra_land_price : 0
+    house_add_on = !self.house_add_on_price.nil? ? self.house_add_on_price : 0
+    plot_add_on = !self.plot_add_on_price.nil? ? self.plot_add_on_price : 0
+
+    base + extra_land + house_add_on + plot_add_on
   end
 
   private
